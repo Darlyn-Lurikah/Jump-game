@@ -1,0 +1,22 @@
+.grid {
+    width: 400px;
+    height: 600px;
+    background-color: aquamarine;
+    position: relative;
+}
+
+/*Using absolue postion for doodler and platform so their position is absolute to the GRID, 
+whose size will be reelative to the size of the browser*/
+.doodler {
+    width: 60px;
+    height: 85px;
+    background-color: blueviolet;
+    position: absolute;
+}
+
+.platform {
+    width: 85px;
+    height: 15px;
+    background-color: green;
+    position: absolute;
+}
