@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let doodlerBottomtSpace = 150
     // isGameOver defined as false to being because the game is obviously not finished if its just started
     let isGameOver = false
+    //Saving platform count in var so it can be changed. We currently need 5 platforms for the current screensize
     let platformCount = 5
 
     //CREATING THE DOODLER
@@ -34,7 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //CREATING THE PLATFORMS
     function createPlatforms() {
-        for(let i=0; i < platformCount)
+        // for loop says when i is less that the 5 declared in platformCount var, increment i by 1 to get to 5
+        for(let i=0; i < platformCount; i++) {
+            //So the gaps between the platforms can be evenly spaced we take the 600px height of the grid and divide it by the 
+            //number of platforms (5 currently)
+            let platformGap = 600 / platformCount
+            let newPlatformBottom = 
+        }
     }
 
     function isGameOver() {
