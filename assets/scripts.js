@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //We use Create element to get html to creat an element, in this case a DIV
     const doodler = document.createElement('div')
     let doodlerLeftSpace = 50
-    let doodlerBottomtSpace = 150
+    let doodlerBottomtSpace = 250
     // isGameOver defined as false to being because the game is obviously not finished if its just started
     let isGameOver = false
     //Saving platform count in var so it can be changed. We currently need 5 platforms for the current screensize
@@ -75,7 +75,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    
+    //MAKING PLATFORMS MOVE
+    function movePlatforms() {
+        // If the doodler bottom space is more than 200
+        if (doodlerBottomtSpace > 200) {
+            // We take the array saved in the 'platforms' var and for each item in the array 
+            platforms.forEach(platform => {
+                // we set that platform's bottom to -4 
+                platform.bottom -= 4
+                // And set a new visual for that platform saved to a var
+                let visual = platform.visual
+                //We grab the visual and apply the new platform bottom to it
+                visual.style.bottom = platform.bottom + 'px'
+            })
+        }
+    }
 
 
     // Function checks if game is over, if thats false, it will create the doodler to start the game
@@ -84,6 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if(!isGameOver) {
             createDoodler()
             createPlatforms()
+            //So the platforms can move quickly we use the 'setInterval()' method, pass the function we want to invoke
+            //and how often we want to invoke it in milliseconds (so 30 milliseconds here )
+            setInterval(movePlatforms,30)
         }
     }
     start()
