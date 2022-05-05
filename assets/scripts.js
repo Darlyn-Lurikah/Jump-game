@@ -25,13 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         doodler.style.bottom = doodlerBottomtSpace + 'px'
     }
     
-    // Function checks if game is over, if thats false, it will create the doodler to start the game
-    function start() {
-        if(!isGameOver) {
-            createDoodler()
-        }
-    }
-    start()
 
     class Platform {
         //Use a constructor to construct (build) our class
@@ -40,7 +33,23 @@ document.addEventListener('DOMContentLoaded', () => {
         constructor(newPlatformBottom) {
             //'this' refers to the current platform being passed into the class
             this.bottom = newPlatformBottom
+            // The Math.random() method multiplied by any num here will return a num from 0-315
+            // We get 315 by subtracting the platform width (85) from the grid width (400) so as long 
+            // as the num is 315 or under our platform will appear in our grid
             this.left = Math.random() * 315
+            //We create a div to display the new platform in 
+            this.visual = document.createElement('div')  
+
+            //We save this.visual in a variable to allow us to add a css classes and styling to it 
+            const visual = this.visual
+            //Add a css class to give some overall styling
+            visual.classList.add('platform')
+            //Set the left spacing to the number we declared in the js class and concat 'px' so it styles in pixels
+            visual.style.left = this.left + 'px'
+            //Set the bottom spacing to the number we declared in the js class and concat 'px' so it styles in pixels
+            visual.style.bottom = this.bottom + 'px'
+            //Then we append the newly declared visual as a child of the '.grid' so it can appear within the grid
+            grid.appendChild(visual)
         }
     }
 
@@ -60,9 +69,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function isGameOver() {
+    
 
+
+    // Function checks if game is over, if thats false, it will create the doodler to start the game
+    function start() {
+        // if the game is NOT over, call these two functions to create our doodler and new platforms
+        if(!isGameOver) {
+            createDoodler()
+            createPlatforms()
+        }
     }
+    start()
+
     
 
 
