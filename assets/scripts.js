@@ -33,14 +33,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     start()
 
+    class Platform {
+        //Use a constructor to construct (build) our class
+        //We pass the new platform newPlatformBottom into the consructor so each new value we get via 
+        //that variable will pass through this class
+        constructor(newPlatformBottom) {
+            //'this' refers to the current platform being passed into the class
+            this.bottom = newPlatformBottom
+            this.left = Math.random() * 315
+        }
+    }
+
     //CREATING THE PLATFORMS
     function createPlatforms() {
         // for loop says when i is less that the 5 declared in platformCount var, increment i by 1 to get to 5
         for(let i=0; i < platformCount; i++) {
-            //So the gaps between the platforms can be evenly spaced we take the 600px height of the grid and divide it by the 
+            //So the gaps between the platforms can be evenly spaced horizontally we take the 600px height of the grid and divide it by the 
             //number of platforms (5 currently)
             let platformGap = 600 / platformCount
-            let newPlatformBottom = 
+            //To space the platforms vertically we need to set a bottom spacing. Here we've set the space to be
+            //100 + the increment i is on / platform gap (which is 600/whatever increment i is on)
+            //Eg. if i = 2 then platformGap is 300. So the equation for newPlatformBottm is 2 / 300 = 150 , 100 + 150 = 250 COME BACK TO THIS EXPLAINATION
+            let newPlatformBottom = 100 + i * platformGap
+            // We will make a class (above) to house the variables for making a new platform 
+            let newPlatform = new Platform (newPlatformBottom)
         }
     }
 
