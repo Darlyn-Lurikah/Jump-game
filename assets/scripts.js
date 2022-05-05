@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let isGameOver = false
     //Saving platform count in var so it can be changed. We currently need 5 platforms for the current screensize
     let platformCount = 5
+    //This platform var is an empty array that will hold an array of our platforms
+    let platforms = []
 
     //CREATING THE DOODLER
     function createDoodler() {
@@ -66,6 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let newPlatformBottom = 100 + i * platformGap
             // We will make a class (above) to house the variables for making a new platform 
             let newPlatform = new Platform (newPlatformBottom)
+            //Below we use the .push method to push the new platforms created in 'newPlatform' 
+            //into an array every time the for loop loops
+            platforms.push(newPlatform)
+            console.log(platforms)
         }
     }
 
